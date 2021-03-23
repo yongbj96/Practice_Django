@@ -1,5 +1,6 @@
 from datetime import timedelta
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,6 +24,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+
+    'prac_jwt',
 ]
 
 MIDDLEWARE = [
@@ -61,8 +64,15 @@ WSGI_APPLICATION = 'Practice_jwt.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE' : 'django.db.backends.mysql',
+        'NAME' : 'testDB',
+        'USER' : 'root',
+        'PASSWORD' : 'tndlf123',
+        'HOST' : '127.0.0.1',
+        'PORT' : '3306'
     }
 }
 
@@ -104,6 +114,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# member/static 부분에 css파일을 적용시키기 위해 작성
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'), # import os 입력시 사용가능
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (

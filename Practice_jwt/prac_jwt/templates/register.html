@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="/static/bootstrap.min.css">
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-12 text-center">
+      <h1>Register Form</h1>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-12">
+    {{error}}
+  </div>
+</div>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-12 confirm">
+      <form method="POST" action=".">{% csrf_token %}
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" name="username" placeholder="username"/>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="PW" name="password" placeholder="password" onchange="isSame()"/>
+          <span id="length"></span>
+        </div>
+        <div class="form-group">
+          <label for="re_password">Password Confirm</label>
+          <input type="password" class="form-control" id="confirmPW" name="re_password" placeholder="confirm" onchange="isSame()"/>
+          <span id="same"></span>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" name="email" placeholder="email"/>
+        </div>
+        <button type="button" class="btn btn-primary" style="float: right; background-color: red;" onclick="location.href='/'">Cancle</button>
+        <button type="submit" class="btn btn-primary" style="float: right;">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function isSame() {
+    var PW = document.getElementById('PW');
+    var confirmPW = document.getElementById('confirmPW');
+    if(PW.value.length < 6 || PW.value.length > 16) {
+      document.getElementById('length').innerHTML = 'The length must be between 6 and 16.';
+      document.getElementById('length').style.color='red';
+    } else {
+      document.getElementById('length').innerHTML = '';
+      if(PW.value!='' && confirmPW.value!='') {
+        if(PW.value==confirmPW.value) {
+          document.getElementById('same').innerHTML='Match';
+          document.getElementById('same').style.color='blue';
+        } else {
+          document.getElementById('same').innerHTML='Missmatch';
+          document.getElementById('same').style.color='red';
+        }
+      }
+    }
+  }
+</script>
