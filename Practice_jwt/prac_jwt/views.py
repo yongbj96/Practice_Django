@@ -5,17 +5,25 @@ def login(request):
     if request.method == 'GET':
         return render(request, 'login.html')
     elif request.method == 'POST':
-        id      = request.POST.get('user_id', None)
-        pw      = request.POST['user_pw']
+        try:
+            if user_data.objects.filter(id = request.POST.get('user_id', None).exist()):
+                print("ID일치")
+                return HttpResponse(status=400)
+            else:
+                print("일치하는 ID 없음")
+                return HttpResponse(status=200)
 
-        user = user_data(
-            id = id,
-            pw = pw
-        )
+        except:
+            # id      = request.POST.get('user_id', None)
+            # pw      = request.POST['user_pw']
 
-        print('#####로그인#####\nid: ', user.id, '\npw: ', user.pw)
+            # user = user_data(
+            #     id = id,
+            #     pw = pw
+            # )
 
-        return redirect('/prac_jwt')
+            # print('#####로그인#####\nid: ', user.id, '\npw: ', user.pw)
+            return redirect('/member')
 
 def register(request):
     if request.method == 'GET':
@@ -37,4 +45,4 @@ def register(request):
             user.save()
             print('#####회원가입#####\nid: ', user.id, '\npw: ', user.pw, '\nname: ', user.name)
     
-    return redirect('/prac_jwt')
+    return redirect('/member')

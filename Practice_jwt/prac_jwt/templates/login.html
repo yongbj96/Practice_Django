@@ -21,11 +21,11 @@
       <form method="POST" action=".">{% csrf_token %}
         <div class="form-group">
           <label for="username">Username</label>
-          <input type="text" class="form-control" name="username" placeholder="username"/>
+          <input type="text" class="form-control" name="user_id" placeholder="username"/>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="PW" name="password" placeholder="password" onchange="isSame()"/>
+          <input type="password" class="form-control" id="PW" name="user_pw" placeholder="password" onchange="isSame()"/>
           <span id="length"></span>
         </div>
         <button type="button" class="btn btn-primary" style="float: right; background-color: salmon;" onclick="location.href='/member/register/'">Register</button>
