@@ -7,6 +7,8 @@ class user_data(models.Model):
     create_at   = models.DateTimeField(auto_now_add=True, verbose_name='가입날짜')
     update_at   = models.DateTimeField(auto_now=True, verbose_name='마지막 수정일')
 
+    USERNAME_FIELD = 'id'
+
     def __str__(self):
         return self.id
     
