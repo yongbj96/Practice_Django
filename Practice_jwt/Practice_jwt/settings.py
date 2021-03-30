@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # 'prac_jwt',
+    'prac_jwt2'
 ]
 
 MIDDLEWARE = [

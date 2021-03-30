@@ -7,7 +7,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    # path('member/', include('prac_jwt.urls')),
+    path('member/', include('prac_jwt2.urls')),
 
     # # JWT 토큰
     # path('api-token-auth/', obtain_jwt_token), # 발생
