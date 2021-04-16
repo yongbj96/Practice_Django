@@ -17,7 +17,7 @@ def login(request):
                                 'id': user[0].get('id'),
                                 'time': now.strftime('%Y-%m-%d %H:%M:%S'),
                                 'exp': datetime.utcnow() + timedelta(minutes=3) # 세션유지시간 3분
-                            }, 'secret', algorithm='HS256')
+                            }, 'secret', algorithm='HS256') # 암호키 'secret'
             print("코드: ", encoded)
             print(jwt.decode(encoded, 'secret', algorithm=['HS256']))
 
